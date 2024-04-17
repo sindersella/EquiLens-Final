@@ -1,11 +1,20 @@
-This app is called vet-a-pet.
-you will be able to: 
-1 - create an account
-2 - log in to view the weather
-3 - view all North and North-west London vet clinics
-4 - search through it to find your nearest vet clinic based on your postcode. It is currently limited to North and North-west London Postcodes.
-5 - see a list of other users.
-6 - delete your own account.
+EquiLens
+
+Overview
+
+EquiLens is a groundbreaking app designed to assess and rank social media platforms based on their neutrality regarding content censorship on social issues and human rights violations. Our mission is to promote transparency, accountability, and freedom of expression in the digital realm, empowering users to make informed decisions about their online presence.
+
+Features (TBD)
+
+Neutrality Ranking: EquiLens evaluates and ranks social media platforms based on their impartiality in addressing content related to social issues and human rights violations.
+
+Informative Insights: Gain in-depth insights into each platform's policies, moderation practices, and historical performance on key topics.
+
+User Empowerment: Make choices aligned with your values by understanding the ideological stance of social media platforms.
+Community Collaboration: Join a community of like-minded individuals to share experiences, engage in discussions, and advocate for a fairer online space.
+
+
+Getting Started
 
 
 an example user account to test features:

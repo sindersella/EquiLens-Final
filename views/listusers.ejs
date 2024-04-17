@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%=shopName%> North London</title>
+    <link rel="stylesheet"  type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <h1><%=shopName%>: List of Users</h1>
+    <body>
+      <table>
+        <tr>
+          <th>First Name</th><th>Username</th>
+        </tr>
+          <% users.forEach(function(user){ %>
+          <tr>
+            <td><%= user.firstname %></td> <td><%= user.username%></td>
+          </tr>  
+        <% }) %>
+      </table>
+      <button><a href="/user">Home page</a></button>  
+      </body>
+    </body>
+</html>

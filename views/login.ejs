@@ -33,15 +33,19 @@
       </div>
     </header>
     
-    <main class="main">
-        <h1 class="login_heading">Login to <%=shopName%></h1>
-        <form method="POST" action="/loggedin">
-            <p>Username: <input id="username" type="text" name="username" placeholder="username"/></p>
-            <p>Password: <input id="password" type="password" name="password" placeholder="password"/></p>
-            <input type="submit" value="Login">
+    <main>
+      <h1 class="login_heading">Login to <%=shopName%></h1>
+      <div class="main_content">
+        <form class="form" method="POST" action="/loggedin">
+          <p>Username: <input class="login_input" id="username" type="text" name="username" placeholder="username"/></p>
+          <p>Password: <input class="login_input" id="password" type="password" name="password" placeholder="password"/></p>
+          <input class="submit_button" type="submit" value="Login">
+          <p>Don't have an account?  <button><a class="register_button" href="/">Register here</a></button></p>
         </form>
-        <p>Don't have an account?  <button><a href="/">Register here</a></button></p>
+        <img class="login_image" src="Hello-rafiki.png">
+      </div>
     </main>
+
 
     <footer>
       <p class="copyright"> © Copyright 2024. All rights reserved by Sundus Abdi.</p>

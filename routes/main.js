@@ -44,6 +44,11 @@ module.exports = function(app, shopData) {
         res.render("search.ejs", shopData);
     });
 
+    // renders contact page
+      app.get('/contact',function(req,res){
+        res.render('contact.ejs', shopData)
+    });
+
     ///////////////////////////////////// list and search clinics and users in database //////////////////////////////////////////
 
     //search through Clinics table to find nearest vet to user's postcode.

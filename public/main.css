@@ -121,7 +121,7 @@ h1 {
   display: inline-block;
   line-height: 2.5;
   font-size: 20px;
-  max-width: 550px;
+  max-width: 600px;
   width: 100%;
   padding: 30px;
   border-radius: 6px;
@@ -130,6 +130,7 @@ h1 {
 
 .form_head {
   font-size: 30px;
+  color: rgba(22, 108, 221, 0.807);
 }
 
 img {

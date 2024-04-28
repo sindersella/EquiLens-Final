@@ -43,8 +43,8 @@
           <h1><%=shopName%> </h1>
           <h2>Here is the nearest vet to your North London address:</h2>
           <ul>
-            <% nearestClinic.forEach(function(clinics) { %>
-              <li><%= clinics.name %>, <%=clinics.street%> </li>
+            <% nearestClinic.forEach(function(rankings) { %>
+              <li><%= rankings.platform %>, <%=rankings.issue%>, <%=rankings.ranking%> </li>
             <% }) %>
           </ul>
           <button><a href="/user">Home page</a></button>

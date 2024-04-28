@@ -53,7 +53,7 @@ module.exports = function(app, shopData) {
 
     //search through Clinics table to find nearest vet to user's postcode.
     app.get('/search-result', redirectLogin, function (req, res) {
-        let sqlquery = "SELECT * FROM clinics WHERE postcode LIKE '%" + req.sanitize(req.query.keyword) + "%' LIMIT 1"; // this query searches through the clinics by postcode.
+        let sqlquery = "SELECT * FROM rankings WHERE category LIKE '%" + req.sanitize(req.query.keyword) + "%' LIMIT 1"; // this query searches through the rankings by postcode.
         console.log(sqlquery);
         // execute sql query
         db.query(sqlquery, (err, result) => {
@@ -68,7 +68,7 @@ module.exports = function(app, shopData) {
 
     //lists the clinics in the database
     app.get('/list', redirectLogin, function(req, res) {
-        let sqlquery = "SELECT * FROM clinics"; // query database to get all the books
+        let sqlquery = "SELECT * FROM rankings"; // query database to get all the books
         // execute sql query
         db.query(sqlquery, (err, result) => {
             if (err) {

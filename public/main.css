@@ -84,9 +84,13 @@ body {
 }
 
 .hero_text p{
-  padding: 10px 50px;
+  padding: 40px 200px;
   line-height: 1.6;
   font-size: 25px;
+}
+
+.contact_image {
+  margin-right: 100px;
 }
 
 

@@ -16,7 +16,7 @@
                 <li><a href="listusers">All Platforms</a></li>
                 <li><a href="about">About</a></li>
                 <li><a href="logout">Log out</a></li>
-                <li><a href="#"><button>Get in Touch</button></a></li>
+                <li><a href="contact-user"><button>Get in Touch</button></a></li>
               </ul>
             </nav>
             <nav>
@@ -32,7 +32,7 @@
                   <li class="hideLinks"><a href="listusers">All Platforms</a></li>
                   <li class="hideLinks"><a href="about">About</a></li>
                   <li class="hideLinks"><a href="logout">Log out</a></li>
-                  <li class="hideLinks"><a href="#"><button>Get in Touch</button></a></li>
+                  <li class="hideLinks"><a href="contact-user"><button>Get in Touch</button></a></li>
                   <li class="hamburger" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
                 </ul>
               </nav>
@@ -40,13 +40,44 @@
         </header>
 
         <main class="main">
-          <h1><%=shopName%> </h1>
-          <h2>Here is the nearest vet to your North London address:</h2>
-          <ul>
-            <% nearestClinic.forEach(function(rankings) { %>
-              <li><%= rankings.platform %>, <%=rankings.issue%>, <%=rankings.ranking%> </li>
-            <% }) %>
-          </ul>
+          <h1><%=shopName%>: Rankings</h1>
+          <div class="container">
+            <div class="hero_text">
+              <table>
+                <tr>
+                  <th> Platfrom Name </th><th> Issues </th><th> Ranking </th>
+                </tr>
+                  <% platformRating.forEach(function(rankings){ %>
+                  <tr>
+                    <td><%= rankings.platform %></td> 
+                    <td><%= rankings.issue%></td>
+                    <td>
+                      <div class="ratings-wrapper">
+                        <div class="star-ratings">
+                          <span data-rating="5">&#9733;</span>
+                          <span data-rating="4">&#9733;</span>
+                          <span data-rating="3">&#9733;</span>
+                          <span data-rating="2">&#9733;</span>
+                          <span data-rating="1">&#9733;</span>
+                        </div>
+                      </div>
+                      <%=rankings.ranking%> / 5 </td>
+                  </tr>  
+                <% }) %>
+              </table>
+            </div>
+          </div>
+
+          <div class="ratings-wrapper">
+            <div class="star-ratings">
+              <span data-rating="5">&#9733;</span>
+              <span data-rating="4">&#9733;</span>
+              <span data-rating="3">&#9733;</span>
+              <span data-rating="2">&#9733;</span>
+              <span data-rating="1">&#9733;</span>
+            </div>
+          </div>
+
           <button><a href="/user">Home page</a></button>
         </main>
         
@@ -54,7 +85,20 @@
     <p class="copyright"> © Copyright 2024. All rights reserved by Sundus Abdi.</p>
   </footer>
   
-  
+  <!-- here is the script for the star ratings -->
+ <!-- <script>
+    function avgRating(){
+      $("#rateBoxAvg").rate({
+        length: '5',
+        value: '3',
+        readonly: true,
+        size: '100px',
+        text: false
+      });
+    }
+  </script>
+                -->
+
   <script>
     function showSidebar(){
       const sidebar = document.querySelector('.sidebar')

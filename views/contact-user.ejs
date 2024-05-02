@@ -38,26 +38,53 @@
               </nav>
           </div>
         </header>
+    
+    <main class="main">
+      <h1 class="login_heading">Contact Us</h1>
 
-        <main class="main">
-          <h1 class="heading">Our Mission at EQUILENS</h1>
-          <p class="text"> EquiLens is on a mission to promote transparency, accountability, and freedom of expression in the digital realm. We aim to empower users by offering insights into how various social media platforms handle content related to social issues and human rights violations.</p>
-        </main>
-        
-  <footer>
-    <p class="copyright"> © Copyright 2024. All rights reserved by Sundus Abdi.</p>
-  </footer>
-  
-  
-  <script>
-    function showSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'flex'
-    }
-    function hideSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'none'
-    }
-  </script>
-</body>
+      <div class="container">
+        <img class="contact_image" src="Contact us-rafiki.png"> 
+        <div class="hero_text_contact">
+          <h1>Get in Touch with EquiLens:</h1>
+          <p> Have a question, suggestion, or just want to connect? We'd love to hear from you! The EquiLens contact page is your direct link to our team, where transparency and communication are valued.</p>
+
+          <h1>How to Reach Us:</h1>
+
+          <p> <u>General Inquiries:</u><br><br> 
+            For general questions, partnerships, or media inquiries, drop us a line at <b><a href="mailto:contact@equilens.com">contact@equilens.com</a></b>. Our team is ready to assist you. <br><br> 
+            
+            <br> <u>Technical Support:</u><br><br> 
+            If you need technical assistance or encounter any issues with the EquiLens app, please reach out to <b><a href="mailto:support@equilens.com">support@equilens.com</a></b>. We're here to help you navigate seamlessly.
+            <br><br>
+            <br> <u>Feedback and Suggestions:</u><br><br> 
+            Your feedback is invaluable to us! Share your thoughts and suggestions at  <b><a href="mailto:feedback@equilens.com">feedback@equilens.com</a></b>. We appreciate your input in shaping a better EquiLens experience.</p>
+        </div>
+      </div>
+      <form class="form" method="POST" action="/loggedin">
+        <p class="form_head">Please enter your login details below. </p>
+        <p>Username: <input class="login_input" id="username" type="text" name="username" placeholder="username"/></p>
+        <p>Password: <input class="login_input" id="password" type="password" name="password" placeholder="password"/></p>
+        <input class="submit_button" type="submit" value="Login">
+        <p>Don't have an account?  <button><a class="register_button" href="register">Register here</a></button></p>
+      </form>
+      <img class="login_image" src="Login-rafiki.png"> 
+
+    </main>
+
+    <footer>
+      <p class="copyright"> © Copyright 2024. All rights reserved by Sundus Abdi.</p>
+    </footer>
+    
+    
+    <script>
+      function showSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+      }
+      function hideSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+      }
+    </script>
+  </body>
 </html>

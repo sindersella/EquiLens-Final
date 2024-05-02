@@ -45,22 +45,27 @@ module.exports = function(app, shopData) {
     });
 
     // renders contact page
-      app.get('/contact',function(req,res){
+    app.get('/contact',function(req,res){
         res.render('contact.ejs', shopData)
+    });
+
+    // renders contact page when logged in
+    app.get('/contact-user',function(req,res){
+        res.render('contact-user.ejs', shopData)
     });
 
     ///////////////////////////////////// list and search clinics and users in database //////////////////////////////////////////
 
     //search through Clinics table to find nearest vet to user's postcode.
     app.get('/search-result', redirectLogin, function (req, res) {
-        let sqlquery = "SELECT * FROM rankings WHERE category LIKE '%" + req.sanitize(req.query.keyword) + "%' LIMIT 1"; // this query searches through the rankings by postcode.
+        let sqlquery = "SELECT * FROM rankings WHERE issue LIKE '%" + req.sanitize(req.query.keyword) + "%' LIMIT 1"; // this query searches through the rankings by postcode.
         console.log(sqlquery);
         // execute sql query
         db.query(sqlquery, (err, result) => {
             if (err) {
                 res.redirect('./'); 
             }
-            let newData = Object.assign({}, shopData, {nearestClinic:result});
+            let newData = Object.assign({}, shopData, {platformRating:result});
             console.log(newData)
             res.render("list.ejs", newData)
          });        
@@ -74,7 +79,7 @@ module.exports = function(app, shopData) {
             if (err) {
                 res.redirect('./'); 
             }
-            let newData = Object.assign({}, shopData, {nearestClinic:result});
+            let newData = Object.assign({}, shopData, {platformRating:result});
             console.log(newData)
             res.render("list.ejs", newData)
          });

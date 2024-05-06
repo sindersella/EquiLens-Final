@@ -42,31 +42,19 @@
         <main class="main">
           <h1 class="login_heading">Choose a Social Media platform to find out more</h1>
           <div class="container">
-            <img class="contact_image" src="Select-rafiki.png"> 
+            <img class="contact_image" src="images/Select-rafiki.png"> 
             <div class="hero_text">
               <h1>-  Select a platform  - </h1>
-              <p><li class="hideLinks"><a href="list">Instagram</a></li>
-              <li class="hideLinks"><a href="list">Facebook</a></li>
-              <li class="hideLinks"><a href="list">Reddit</a></li>
-              <li class="hideLinks"><a href="list">Tiktok</a></li>
-              <li class="hideLinks"><a href="list">X (formally Twitter) </a></li>
-              <li class="hideLinks"><a href="list">Youtube</a></li></p>
-              <p> Explore the different rankings we have of your favourite social media platforms for the social and humanitarian issues that you are concerned with. </p>
+              <p>
+                <li><a href="list">Instagram</a></li>
+                <li ><a href="list">Facebook</a></li>
+                <li ><a href="list">Tiktok</a></li>
+                <li ><a href="list">X (formally Twitter)</a></li>
+                <li ><a href="list">Reddit</a></li>
+                <li ><a href="list">Youtube</a></li></p>
+              <p> Explore your favourite social media platforms to see the different rankings we have for the social and humanitarian issues that you are concerned with. </p>
             </div>
           </div>
-
-          <h1><%=shopName%>: Rankings</h1>
-          <table>
-            <tr>
-              <th>First Name</th><th>Username</th>
-            </tr>
-              <% users.forEach(function(user){ %>
-              <tr>
-                <td><%= user.firstname %></td> <td><%= user.username%></td>
-              </tr>  
-            <% }) %>
-          </table>
-          <button><a href="/user">Home page</a></button>
         </main>
         
   <footer>

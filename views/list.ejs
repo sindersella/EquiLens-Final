@@ -41,33 +41,30 @@
 
         <main class="main">
           <h1><%=shopName%>: Rankings</h1>
-          <div class="container">
-            <div class="hero_text">
+          <div>
+            <div>
               <table>
                 <tr>
                   <th> Platfrom Name </th><th> Issues </th><th> Ranking </th>
                 </tr>
-                  <% platformRating.forEach(function(rankings){ %>
+                <% platformRating.forEach(function(rankings){ %>
                   <tr>
                     <td><%= rankings.platform %></td> 
-                    <td><%= rankings.issue%></td>
+                    <td><%= rankings.issue %></td>
                     <td>
                       <div class="ratings-wrapper">
                         <div class="star-ratings">
-                          <span data-rating="5">&#9733;</span>
-                          <span data-rating="4">&#9733;</span>
-                          <span data-rating="3">&#9733;</span>
-                          <span data-rating="2">&#9733;</span>
-                          <span data-rating="1">&#9733;</span>
+                          <span class="star" data-rating="<%= rankings.ranking %>"></span>
+                          <span class="rating-text">(<%= rankings.ranking %>/5)</span>
                         </div>
                       </div>
-                      <%=rankings.ranking%> / 5 </td>
+                    </td>
                   </tr>  
-                <% }) %>
+                  <% }) %>
               </table>
             </div>
           </div>
-
+          
           <div class="ratings-wrapper">
             <div class="star-ratings">
               <span data-rating="5">&#9733;</span>
@@ -86,19 +83,27 @@
   </footer>
   
   <!-- here is the script for the star ratings -->
- <!-- <script>
-    function avgRating(){
-      $("#rateBoxAvg").rate({
-        length: '5',
-        value: '3',
-        readonly: true,
-        size: '100px',
-        text: false
-      });
-    }
-  </script>
-                -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const stars = document.querySelectorAll(".star");
 
+      stars.forEach(star => {
+        const rating = parseInt(star.getAttribute("data-rating"));
+
+        for (let i = 1; i <= 5; i++) {
+          if (i <= rating) {
+            star.innerHTML += "&#9733;";
+          } else {
+            star.innerHTML += "&#9734;";
+          }
+        }
+      });
+    });
+  </script>
+
+  
+
+              
   <script>
     function showSidebar(){
       const sidebar = document.querySelector('.sidebar')

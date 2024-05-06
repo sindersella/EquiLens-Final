@@ -177,21 +177,21 @@ img {
   font-size: 35px;
   max-width: 1000px;
   margin: 0 auto;
-
-
 }
 
 .star-ratings {
   display: flex;
+  align-items: center; 
   flex-direction: row-reverse;
+  justify-content: center;
   color: rgba(255, 255, 255, 1);
+  font-size: 100px; /* Adjust the font size of the stars */
 }
 
 .star-ratings span {
-  padding: 10px;
+  padding: 30px; /* Adjust the padding of the stars */
   cursor: pointer; 
   transition: color .2s, transform .2s;
-  font-size: 50px;
 }
 
 .star-ratings span:hover {
@@ -207,15 +207,53 @@ img {
   display: none;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
+  color: rgba(255, 255, 255, 0.75);
   padding: 5px;
   border-radius: 5px;
+  font-size: 40px;
+  margin-left: 50px;
 }
 
-.star-ratings:hover .rating-text {
-  display: block;
+
+.styled-table th.stars, .styled-table td.stars {
+  width: 100px; /* Adjust the width of the stars column */
+  text-align: center;
 }
 
+
+.styled-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 1px solid rgba(22, 108, 221, 0.807);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.styled-table th, .styled-table td {
+  padding: 10px;
+  border: 1px solid rgba(22, 108, 221, 0.807);
+  font-size: 35px;
+}
+
+.styled-table th {
+  background-color: rgba(22, 108, 221, 0.807);
+  color: white;
+  font-weight: bold;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: rgba(22, 108, 221, 0.1);
+}
+
+.styled-table tbody tr:hover {
+  background-color: rgba(22, 108, 221, 0.2);
+}
+
+.table-container {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
 
 footer {
   background-color: rgba(58, 69, 83, 0.859);
@@ -255,7 +293,7 @@ ul {
 }
 
 li, a, button {
-  font-size:20px;
+  font-size: 30px;
   white-space: nowrap;
   color:rgba(22, 108, 221, 0.807);
   text-decoration: none;
@@ -374,7 +412,6 @@ button:hover {
     text-align: center;
   }
   
-
 }
 
 @media(max-width: 400px) {
@@ -383,5 +420,11 @@ button:hover {
   }
   .search_bar{
     width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .styled-table {
+    width: 95%;
   }
 }

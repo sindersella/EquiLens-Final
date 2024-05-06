@@ -41,15 +41,29 @@
 
         <main class="main">
           <h1><%=shopName%>: Rankings</h1>
-          <div>
-            <div>
-              <table>
+          <!-- Filter -->
+          <div class="filter">
+            <label for="issue">Select Issue:</label>
+            <select id="issue" onchange="filterRankings()">
+              <option value="">All</option>
+              <% platformRating.forEach(function(rankings){ %>
+                <option value="<%= rankings.issue %>"><%= rankings.issue %></option>
+              <% }) %>
+            </select>
+          </div>
+    
+          <!-- Table -->
+          <div class="table-container">
+            <table class="styled-table">
+              <thead>
                 <tr>
-                  <th> Platfrom Name </th><th> Issues </th><th> Ranking </th>
+                  <th>Issues</th>
+                  <th>Ranking</th>
                 </tr>
+              </thead>
+              <tbody id="rankingsTableBody">
                 <% platformRating.forEach(function(rankings){ %>
                   <tr>
-                    <td><%= rankings.platform %></td> 
                     <td><%= rankings.issue %></td>
                     <td>
                       <div class="ratings-wrapper">
@@ -60,59 +74,92 @@
                       </div>
                     </td>
                   </tr>  
-                  <% }) %>
-              </table>
-            </div>
-          </div>
-          
-          <div class="ratings-wrapper">
-            <div class="star-ratings">
-              <span data-rating="5">&#9733;</span>
-              <span data-rating="4">&#9733;</span>
-              <span data-rating="3">&#9733;</span>
-              <span data-rating="2">&#9733;</span>
-              <span data-rating="1">&#9733;</span>
-            </div>
-          </div>
-
-          <button><a href="/user">Home page</a></button>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>      
         </main>
         
-  <footer>
-    <p class="copyright"> © Copyright 2024. All rights reserved by Sundus Abdi.</p>
-  </footer>
-  
-  <!-- here is the script for the star ratings -->
+    <footer>
+      <p class="copyright"> © Copyright 2024. All rights reserved by Sundus Abdi.</p>
+    </footer>
+
+
+    <!-- here is the script for the sidebar -->
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const stars = document.querySelectorAll(".star");
-
-      stars.forEach(star => {
-        const rating = parseInt(star.getAttribute("data-rating"));
-
-        for (let i = 1; i <= 5; i++) {
-          if (i <= rating) {
-            star.innerHTML += "&#9733;";
+      function showSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+      }
+      function hideSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+      }
+    </script>
+    
+    <!-- here is the script for the filter ratings -->
+    <script>
+      function filterRankings() {
+        var selectedIssue = document.getElementById("issue").value;
+        var tableRows = document.querySelectorAll("#rankingsTableBody tr");
+    
+        tableRows.forEach(function(row) {
+          var issue = row.cells[0].innerText;
+          if (selectedIssue === "" || selectedIssue === issue) {
+            row.style.display = "table-row";
           } else {
-            star.innerHTML += "&#9734;";
+            row.style.display = "none";
           }
-        }
+        });
+      }
+    </script>
+
+    
+    <!-- here is the script for the star ratings -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const stars = document.querySelectorAll(".star");
+
+        stars.forEach(star => {
+          const rating = parseInt(star.getAttribute("data-rating"));
+
+          for (let i = 1; i <= 5; i++) {
+            if (i <= rating) {
+              star.innerHTML += "&#9733;";
+            } else {
+              star.innerHTML += "&#9734;";
+            }
+          }
+        });
       });
-    });
-  </script>
+    </script>
 
-  
 
-              
-  <script>
-    function showSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'flex'
-    }
-    function hideSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'none'
-    }
-  </script>
-</body>
+    <!-- here is the script for the number rating -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const stars = document.querySelectorAll(".star");
+
+        stars.forEach(star => {
+          star.addEventListener('click', function() {
+            const rating = parseInt(star.getAttribute("data-rating"));
+            const ratingText = star.parentNode.querySelector('.rating-text');
+            ratingText.textContent = '(' + rating + '/5)';
+            ratingText.style.display = 'inline'; 
+            ratingText.style.marginLeft = '10px'; 
+
+            setTimeout(function(){
+            ratingText.style.display = 'none';
+          }, 3000);
+
+          });
+        });
+      });
+    </script>
+
+
+    
+
+          
+  </body>
 </html>

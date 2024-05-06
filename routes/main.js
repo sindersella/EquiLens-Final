@@ -67,13 +67,13 @@ module.exports = function(app, shopData) {
             }
             let newData = Object.assign({}, shopData, {platformRating:result});
             console.log(newData)
-            res.render("list.ejs", newData)
+            res.render("rankings.ejs", newData)
          });        
     });
 
-    //lists the clinics in the database
+    //lists the rankings in the database
     app.get('/list', redirectLogin, function(req, res) {
-        let sqlquery = "SELECT * FROM rankings"; // query database to get all the books
+        let sqlquery = "SELECT * FROM rankings"; // query database to get all the rankings
         // execute sql query
         db.query(sqlquery, (err, result) => {
             if (err) {
@@ -81,12 +81,12 @@ module.exports = function(app, shopData) {
             }
             let newData = Object.assign({}, shopData, {platformRating:result});
             console.log(newData)
-            res.render("list.ejs", newData)
+            res.render("rankings.ejs", newData)
          });
     });
 
-    // list of the users page
-    app.get('/listusers', redirectLogin, (req, res) => {
+    // list of the platforms page
+    app.get('/platforms', redirectLogin, (req, res) => {
         let sqlquery = "SELECT firstname, lastname, username, email FROM user_details"; // query database to get all the users
         //this query takes the list of users from the table user_details
         db.query(sqlquery, (err, result) => {
@@ -95,7 +95,7 @@ module.exports = function(app, shopData) {
             }
             let newData = Object.assign({}, shopData, {users: result});
             console.log(newData);
-            res.render("listusers.ejs", newData)
+            res.render("platforms.ejs", newData)
         });
     });
 

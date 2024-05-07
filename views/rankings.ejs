@@ -3,6 +3,17 @@
   <head>
     <title><%=shopName%></title>
     <link rel="stylesheet"  type="text/css" href="/main.css" />
+    <% 
+    let totalScore = 0;
+    let averageScore = 0;
+    
+    if (platformRating && platformRating.length > 0) {
+      platformRating.forEach(function(rankings) {
+        totalScore += parseFloat(rankings.ranking); // Ensure it's a float in case it comes as a string
+      });
+      averageScore = totalScore / platformRating.length; // Calculate the average
+    }
+    %>    
   </head>
   <body>
     <header class="header">
@@ -41,6 +52,9 @@
 
         <main class="main">
           <h1><%=shopName%>: Rankings</h1>
+          <div class="overall-score">
+            <h2>Overall Score for Instagram: <%= averageScore.toFixed(2) %> / 5 <br><br></h2>
+          </div>
           <!-- Filter -->
           <div class="filter">
             <label for="issue">Select Issue:</label>
@@ -157,9 +171,5 @@
       });
     </script>
 
-
-    
-
-          
   </body>
 </html>

@@ -89,8 +89,7 @@ body {
   font-size: 40px;
 }
 
-
-.hero_text a {
+.plat_buttons {
   font-size: 45px;
   border: 3px solid rgba(22, 108, 221, 0.807);
   border-radius: 40px;

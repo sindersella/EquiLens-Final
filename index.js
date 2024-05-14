@@ -1,3 +1,5 @@
+// This index.js file is the entry point for the web application, initialising the Express server and setting up essential middleware and routes. It imports necessary modules, configures session management, and integrates the main application logic to ensure the app runs as intended.
+
 // Import the modules we need
 var express = require ('express')
 var session = require("express-session");
@@ -24,10 +26,8 @@ app.use(session({
     }
 }));
 
-
 // Set up css
 app.use(express.static(__dirname + '/public'));
-
 
 // Define the database connection
 const db = mysql.createConnection ({
@@ -45,7 +45,6 @@ db.connect((err) => {
 });
 global.db = db;
 
-
 // Set the directory where Express will pick up HTML files
 // __dirname will get the current directory
 app.set('views', __dirname + '/views');
@@ -58,10 +57,10 @@ app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
 
 // Define our data
-var shopData = {shopName: "EquiLens"}
+var appData = {appName: "EquiLens"}
 
 // Requires the main.js file inside the routes folder passing in the Express app and data as arguments.  All the routes will go in this file
-require("./routes/main")(app, shopData);
+require("./routes/main")(app, appData);
 
 // Start the web app listening
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

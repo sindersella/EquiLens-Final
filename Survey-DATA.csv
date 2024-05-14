@@ -1,0 +1,85 @@
+Id,Platform,Category,Issue,Ranking
+1,Instagram,Social issues,Ableism,4
+2,Instagram,Social issues,Colourism,2
+3,Instagram,Social issues,Islamophobia,1
+4,Instagram,Social issues,Racism,3
+5,Instagram,Social issues,Sexism,3
+6,Instagram,Social issues,Transphobia,1
+7,Instagram,Social issues,Xenophobia,2
+8,Instagram,Humanitarian issues,Ethnic Cleansing,1
+9,Instagram,Humanitarian issues,Genocide,2
+10,Instagram,Humanitarian issues,Human Trafficking,4
+11,Instagram,Humanitarian issues,Sexual Violence in Conflict,2
+12,Instagram,Humanitarian issues,State-Sponsored Violence,3
+13,Instagram,Humanitarian issues,Terrorism,3
+14,Instagram,Humanitarian issues,War Crimes,3
+15,Facebook,Social issues,Ableism,3
+16,Facebook,Social issues,Colourism,2
+17,Facebook,Social issues,Islamophobia,1
+18,Facebook,Social issues,Racism,2
+19,Facebook,Social issues,Sexism,3
+20,Facebook,Social issues,Transphobia,2
+21,Facebook,Social issues,Xenophobia,4
+22,Facebook,Humanitarian issues,Ethnic Cleansing,2
+23,Facebook,Humanitarian issues,Genocide,2
+24,Facebook,Humanitarian issues,Human Trafficking,3
+25,Facebook,Humanitarian issues,Sexual Violence in Conflict,2
+26,Facebook,Humanitarian issues,State-Sponsored Violence,3
+27,Facebook,Humanitarian issues,Terrorism,2
+28,Facebook,Humanitarian issues,War Crimes,3
+29,Reddit,Social issues,Ableism,4
+30,Reddit,Social issues,Colourism,3
+31,Reddit,Social issues,Islamophobia,4
+32,Reddit,Social issues,Racism,4
+33,Reddit,Social issues,Sexism,3
+34,Reddit,Social issues,Transphobia,4
+35,Reddit,Social issues,Xenophobia,3
+36,Reddit,Humanitarian issues,Ethnic Cleansing,3
+37,Reddit,Humanitarian issues,Genocide,4
+38,Reddit,Humanitarian issues,Human Trafficking,4
+39,Reddit,Humanitarian issues,Sexual Violence in Conflict,4
+40,Reddit,Humanitarian issues,State-Sponsored Violence,3
+41,Reddit,Humanitarian issues,Terrorism,5
+42,Reddit,Humanitarian issues,War Crimes,4
+43,TikTok,Social issues,Ableism,2
+44,TikTok,Social issues,Colourism,3
+45,TikTok,Social issues,Islamophobia,2
+46,TikTok,Social issues,Racism,3
+47,TikTok,Social issues,Sexism,4
+48,TikTok,Social issues,Transphobia,3
+49,TikTok,Social issues,Xenophobia,2
+50,TikTok,Humanitarian issues,Ethnic Cleansing,2
+51,TikTok,Humanitarian issues,Genocide,2
+52,TikTok,Humanitarian issues,Human Trafficking,4
+53,TikTok,Humanitarian issues,Sexual Violence in Conflict,3
+54,TikTok,Humanitarian issues,State-Sponsored Violence,1
+55,TikTok,Humanitarian issues,Terrorism,3
+56,TikTok,Humanitarian issues,War Crimes,3
+57,X ( formally Twitter),Social issues,Ableism,4
+58,X ( formally Twitter),Social issues,Colourism,3
+59,X ( formally Twitter),Social issues,Islamophobia,2
+60,X ( formally Twitter),Social issues,Racism,3
+61,X ( formally Twitter),Social issues,Sexism,3
+62,X ( formally Twitter),Social issues,Transphobia,2
+63,X ( formally Twitter),Social issues,Xenophobia,2
+64,X ( formally Twitter),Humanitarian issues,Ethnic Cleansing,3
+65,X ( formally Twitter),Humanitarian issues,Genocide,3
+66,X ( formally Twitter),Humanitarian issues,Human Trafficking,4
+67,X ( formally Twitter),Humanitarian issues,Sexual Violence in Conflict,3
+68,X ( formally Twitter),Humanitarian issues,State-Sponsored Violence,4
+69,X ( formally Twitter),Humanitarian issues,Terrorism,2
+70,X ( formally Twitter),Humanitarian issues,War Crimes,3
+71,Youtube,Social issues,Ableism,3
+72,Youtube,Social issues,Colourism,3
+73,Youtube,Social issues,Islamophobia,2
+74,Youtube,Social issues,Racism,3
+75,Youtube,Social issues,Sexism,3
+76,Youtube,Social issues,Transphobia,2
+77,Youtube,Social issues,Xenophobia,3
+78,Youtube,Humanitarian issues,Ethnic Cleansing,2
+79,Youtube,Humanitarian issues,Genocide,2
+80,Youtube,Humanitarian issues,Human Trafficking,3
+81,Youtube,Humanitarian issues,Sexual Violence in Conflict,3
+82,Youtube,Humanitarian issues,State-Sponsored Violence,2
+83,Youtube,Humanitarian issues,Terrorism,3
+84,Youtube,Humanitarian issues,War Crimes,3

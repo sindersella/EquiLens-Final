@@ -1,4 +1,6 @@
-module.exports = function(app, shopData) {
+// This is the main.js file that sets up various routes for the Express application, handling requests for different pages like home, user, rankings, and platforms. It also includes middleware for user session validation, search functionality, and interactions with a MySQL database for retrieving and displaying platform rankings.
+
+module.exports = function(app, appData) {
     //allows for request to be used 
     const request = require('request');
 
@@ -20,135 +22,82 @@ module.exports = function(app, shopData) {
     const bcrypt = require('bcrypt');
     const saltRounds = 10;
 
-
     // added here so all routes can access it: validate email 
     const { check, validationResult} = require('express-validator');
 
     // Handle our routes
     app.get('/',function(req,res){
-        res.render('index.ejs', shopData)
+        res.render('index.ejs', appData)
     });
 
     // Home page when logged in
     app.get('/user',function(req,res){
-        res.render('loggedin.ejs', shopData)
+        res.render('loggedin.ejs', appData)
     });
 
     //renders about page
     app.get('/about',function(req,res){
-        res.render('about.ejs', shopData);
+        res.render('about.ejs', appData);
     });
 
     //renders search page
     app.get('/search',function(req,res){
-        res.render("search.ejs", shopData);
+        res.render("search.ejs", appData);
     });
 
     // renders contact page
     app.get('/contact',function(req,res){
-        res.render('contact.ejs', shopData)
+        res.render('contact.ejs', appData)
     });
 
     // renders contact page when logged in
     app.get('/contact-user',function(req,res){
-        res.render('contact-user.ejs', shopData)
+        res.render('contact-user.ejs', appData)
+    });
+
+    //renders all platforms page
+    app.get('/platforms', redirectLogin, function(req,res){
+        res.render('platforms.ejs', appData);
     });
 
     ///////////////////////////////////// list and search clinics and users in database //////////////////////////////////////////
 
-    //search through Clinics table to find nearest vet to user's postcode.
+    //search through rankings table to find query.
     app.get('/search-result', redirectLogin, function (req, res) {
-        let sqlquery = "SELECT * FROM rankings WHERE issue LIKE '%" + req.sanitize(req.query.keyword) + "%' LIMIT 1"; // this query searches through the rankings by postcode.
+        let keyword = req.sanitize(req.query.keyword);
+        let sqlquery = "SELECT * FROM rankings WHERE issue LIKE '%" + keyword + "%'";
         console.log(sqlquery);
         // execute sql query
         db.query(sqlquery, (err, result) => {
             if (err) {
                 res.redirect('./'); 
+            } else {
+                let newData = Object.assign({}, appData, { platformRating: result, keyword: keyword });
+                console.log(newData);
+                res.render("rankings.ejs", newData);
             }
-            let newData = Object.assign({}, shopData, {platformRating:result});
-            console.log(newData)
-            res.render("rankings.ejs", newData)
-         });        
+        });        
     });
-
-    //lists the rankings in the database
+    
+    //lists the rankings in the database for platforms page
     app.get('/list', redirectLogin, function(req, res) {
-        let sqlquery = "SELECT * FROM rankings"; // query database to get all the rankings
-        // execute sql query
-        db.query(sqlquery, (err, result) => {
+        let platform = req.query.platform ? decodeURIComponent(req.query.platform) : '';
+        let sqlquery = platform ? "SELECT * FROM rankings WHERE platform = ?" : "SELECT * FROM rankings";
+        db.query(sqlquery, [platform], (err, result) => {
             if (err) {
                 res.redirect('./'); 
             }
-            let newData = Object.assign({}, shopData, {platformRating:result});
-            console.log(newData)
-            res.render("rankings.ejs", newData)
-         });
-    });
-
-    // list of the platforms page
-    app.get('/platforms', redirectLogin, (req, res) => {
-        let sqlquery = "SELECT firstname, lastname, username, email FROM user_details"; // query database to get all the users
-        //this query takes the list of users from the table user_details
-        db.query(sqlquery, (err, result) => {
-            if (err) {
-                res.redirect('./');
-            }
-            let newData = Object.assign({}, shopData, {users: result});
-            console.log(newData);
-            res.render("platforms.ejs", newData)
+            let newData = Object.assign({}, appData, {platformRating: result, selectedPlatform: platform});
+            res.render("rankings.ejs", newData);
         });
-    });
-
-///////////////////////////////////////// Extra content - APIs //////////////////////////////////////////////
-
-    //renders map page
-
-    app.get('/map',function(req,res){
-        res.render('map.ejs', shopData);
-    });
-
-    // Getting and rendering the form users will input the weather
-    app.get('/weather', function(req, res) {
-        res.render('weather.ejs', shopData);
-    })
-
-    //Loading the results of the OpenWeather map API
-    app.post('/weather-results', [check('city').not().notEmpty()], function(req, res) {  
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            res.redirect('./weather'); }
-        else { 
-            let apiKey = 'bf288062cfc9308448e190da1c496b1d';
-            // Variable will get the city name inputted by the user
-            let city = req.sanitize(req.body.city);
-            console.log("this is the city: " + city);
-            let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
-        
-            request(url, function (err, response, body) {
-                if(err){
-                  console.log('error:', error);
-                } else {
-                  //res.send(body);
-                  var weather = JSON.parse(body)
-                  console.log(weather);
-                  var wmsg = 'It is '+ weather.main.temp + 
-                     ' degrees in '+ weather.name +
-                     '! <br> The humidity now is: ' + 
-                     weather.main.humidity +
-                     '. <br> The weather description now is: ' + weather.weather[0].description +
-                     '. <br> The wind speed now is: ' + weather.wind.speed;
-                  res.send (wmsg + '<br><br> <a href='+'./user'+'>Home page</a>');            
-                } 
-            });  
-        }
-    }); 
-
-
+    });      
+    
+    
 ///////////////////////////////////////////  registering for an account  //////////////////////////////////////////////////
 
     //renders register page
     app.get('/register', function (req,res) {
-        res.render('register.ejs', shopData);                                                                     
+        res.render('register.ejs', appData);                                                                     
     });  
                                                                                                
     app.post('/registered', [check('email').isEmail()], [check('password').not().notEmpty().isLength({ min: 8 }).withMessage('Password is required')], 
@@ -190,10 +139,10 @@ module.exports = function(app, shopData) {
     }); 
 
 
-    ///////////////////////////////////////////////// Log in and account deletion  ////////////////////////////////////////////////////
+    ///////////////////////////////////////////////// Log in and account ////////////////////////////////////////////////////
     // login page route
     app.get('/login', (req, res) => { 
-        res.render('login.ejs', shopData) 
+        res.render('login.ejs', appData) 
     });
     // logging in user
     app.post('/loggedin', (req, res) => {
@@ -221,39 +170,6 @@ module.exports = function(app, shopData) {
                     }
                 });
             }
-        });
-    });
-
-     // delete user page route
-     app.get('/deleteuser', redirectLogin, (req, res) => { 
-        res.render('deleteusers.ejs', shopData) 
-    });
-    // deleting the user
-    app.post('/deleteuser', (req, res) => {
-        let sqlquery = 'DELETE from user_details WHERE username = ? '
-        const deleteUser = req.sanitize(req.body.username);
-        console.log(deleteUser);
-
-        db.query(sqlquery, deleteUser, (err, result) => {
-            if (err){
-                console.log(err.message)
-            }
-            
-            // checks if an empty set is returned
-            else if (result.affectedRows == 0){
-                //error message
-                res.send("User '" + deleteUser + "' not found. "+  '<a href='+'./deleteuser'+'> Try again.</a>');
-            }
-            else {
-                console.log("user sucessfully deleted!");
-                req.session.destroy(err => {
-                    if (err) {
-                      return res.redirect('./')
-                    }
-                    res.send('you are now logged out. <a href='+'./'+'>Home</a>');
-                    })
-            }
-
         });
     });
 

@@ -72,12 +72,13 @@ module.exports = function(app, appData) {
             if (err) {
                 res.redirect('./'); 
             } else {
-                let newData = Object.assign({}, appData, { platformRating: result, keyword: keyword });
+                let newData = Object.assign({}, appData, { platformRating: result, keyword: keyword, selectedPlatform: '' });
                 console.log(newData);
                 res.render("rankings.ejs", newData);
             }
         });        
     });
+    
     
     //lists the rankings in the database for platforms page
     app.get('/list', redirectLogin, function(req, res) {
@@ -90,7 +91,7 @@ module.exports = function(app, appData) {
             let newData = Object.assign({}, appData, {platformRating: result, selectedPlatform: platform});
             res.render("rankings.ejs", newData);
         });
-    });      
+    });        
     
     
 ///////////////////////////////////////////  registering for an account  //////////////////////////////////////////////////

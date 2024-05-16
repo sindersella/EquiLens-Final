@@ -61,7 +61,7 @@ Ensure you have the following installed:
 
 ### File Structure
 
-- **index.js**: The entry point of the application, initializing the Express server and setting up middleware and routes.
+- **index.js**: The entry point of the application, initialising the Express server and setting up middleware and routes.
 - **routes/main.js**: Contains the main application logic, including routes for different pages like home, user, rankings, and platforms. It handles session validation, search functionality, and interactions with the MySQL database.
 - **views**: Contains EJS files for rendering different pages.
 - **public**: Contains static files like CSS and images.
